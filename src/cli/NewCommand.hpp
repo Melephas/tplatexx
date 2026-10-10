@@ -34,6 +34,7 @@ public:
     ~NewCommand() override = default;
 
     std::string name() const override;
+    std::string description() const override;
     std::string usage() const override;
 
     ReturnCode run(const std::vector<std::string>& args) override;

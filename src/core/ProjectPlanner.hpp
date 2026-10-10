@@ -18,7 +18,7 @@ class ProjectPlanner
 public:
     explicit ProjectPlanner(std::vector<std::unique_ptr<IFileGenerator>> generators);
 
-    ProjectPlan plan(const ProjectOptions& o) const;
+    ProjectPlan plan(const ProjectOptions& opts) const;
 };
 
 

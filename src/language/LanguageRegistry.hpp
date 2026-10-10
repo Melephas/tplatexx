@@ -6,16 +6,16 @@
 #include "ILanguageProfile.hpp"
 #include "../core/Language.hpp"
 
+
 class LanguageRegistry
 {
+    std::vector<std::shared_ptr<ILanguageProfile>> profiles;
+
 public:
     void add(std::unique_ptr<ILanguageProfile> profile);
 
-    const ILanguageProfile* byId(Language lang) const;
-    const ILanguageProfile* byCliName(std::string_view name) const;
+    std::shared_ptr<ILanguageProfile> byId(Language lang) const;
+    std::shared_ptr<ILanguageProfile> byCliName(std::string_view name) const;
 
-    const std::vector<std::unique_ptr<ILanguageProfile>>& all() const;
-
-private:
-    std::vector<std::unique_ptr<ILanguageProfile>> profiles_;
+    const std::vector<std::shared_ptr<ILanguageProfile>>& all() const;
 };

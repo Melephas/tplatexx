@@ -23,13 +23,18 @@ std::string NewCommand::name() const
     return "new";
 }
 
+std::string NewCommand::description() const
+{
+    throw UnimplementedError {};
+}
+
 std::string NewCommand::usage() const
 {
     // TODO: write a proper usage for this
-    return "";
+    throw UnimplementedError {};
 }
 
-ReturnCode NewCommand::run(const std::vector<std::string>& args) try
+ReturnCode NewCommand::run(const std::vector<std::string>& args)
 {
     const RawArgs raw = parser.parse(args);
     const ProjectOptions options = validator.validate(raw);
@@ -48,16 +53,4 @@ ReturnCode NewCommand::run(const std::vector<std::string>& args) try
     reporter.created(options);
 
     return ReturnCode::Success;
-}
-catch (const UsageError& usage_error)
-{
-    reporter.error(std::format("incorrect usage: {}", usage_error.what()));
-    return ReturnCode::UsageError;
-}
-catch (const TplateError& error)
-{
-    reporter.error(
-        std::format("an unexpected error has occurred: {}", error.what())
-    );
-    return ReturnCode::RuntimeError;
 }

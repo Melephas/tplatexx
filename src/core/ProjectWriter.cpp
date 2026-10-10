@@ -8,5 +8,5 @@ ProjectWriter::ProjectWriter(IFileSystem& fs)
 
 void ProjectWriter::write(const ProjectPlan& plan, const std::filesystem::path& root)
 {
-    throw FileSystemError { "Not yet implemented" };
+    throw UnimplementedError {};
 }

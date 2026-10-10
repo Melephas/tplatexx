@@ -2,9 +2,10 @@
 
 #include "ILanguageProfile.hpp"
 
-class CProfile : public ILanguageProfile
+struct CProfile : ILanguageProfile
 {
-public:
+    ~CProfile() override = default;
+
     Language id() const override;
     std::string_view cliName() const override;
     std::string_view cmakeLanguage() const override;
@@ -15,3 +16,5 @@ public:
     std::string compileFeature(int std) const override;
     std::string_view extensionsProperty() const override;
 };
+
+

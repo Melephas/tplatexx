@@ -3,6 +3,10 @@
 #include "Errors.hpp"
 #include "IReporter.hpp"
 
+#ifndef TPLATE_VERSION
+#   define TPLATE_VERSION "VERSION_MISSING"
+#endif
+
 
 InfoCommand::InfoCommand(const IReporter& reporter)
     : reporter { reporter } {}
@@ -19,11 +23,11 @@ std::string InfoCommand::description() const
 
 std::string InfoCommand::usage() const
 {
-    throw UnimplementedError {};
+    return std::format("{}\n\nThis command takes no arguments", name());
 }
 
-ReturnCode InfoCommand::run(const std::vector<std::string>& args)
+ReturnCode InfoCommand::run(const std::vector<std::string>& /*args*/)
 {
-    reporter.note("This is some information");
+    reporter.note(std::format("tplate++ v{} - C/C++ project templating, rewritten", TPLATE_VERSION));
     return ReturnCode::Success;
 }

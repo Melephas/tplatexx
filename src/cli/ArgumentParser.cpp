@@ -36,7 +36,7 @@ RawArgs ArgumentParser::parse(const std::vector<std::string>& args) const
     RawArgs ret {};
 
     const auto args_size = args.size();
-    for (auto i { 0 }; i < args_size; i++)
+    for (std::size_t i { 0 }; i < args_size; i++)
     {
         decltype(auto) arg = args.at(i);
 
